@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +26,12 @@ public class ClassController {
         return (klass + " Already exist");
     }
 
+
     @GetMapping
     public List<Class> allClasses(){
         return classService.findAll();
     }
+
 
     @GetMapping("/{id}")
     public Class findClassById (@PathVariable("id") Long Id) {
